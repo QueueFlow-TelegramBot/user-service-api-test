@@ -1,15 +1,17 @@
 package com.github.queueflow;
 
 import com.github.javafaker.Faker;
+import com.github.queueflow.config.Environment;
 import com.github.queueflow.dto.User;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
+import org.aeonbits.owner.ConfigCache;
 
 import java.util.Random;
 
 public abstract class BaseTest {
-    public static final String BASE_URI = "http://192.168.0.139:31858/";
+    public static final String BASE_URI = ConfigCache.getOrCreate(Environment.class).baseUri();
     public static final RequestSpecification REQUEST_SPEC = new RequestSpecBuilder()
             .setBaseUri(BASE_URI)
             .setContentType(ContentType.JSON)
