@@ -23,8 +23,7 @@ public class ExistingUserTest extends BaseTest {
         );
 
         given()
-                .contentType(ContentType.JSON)
-                .baseUri(BASE_URI)
+                .spec(REQUEST_SPEC)
                 .body(ExistingUserTest.user)
         .when()
                 .post("/user")
@@ -35,8 +34,7 @@ public class ExistingUserTest extends BaseTest {
     @Test
     public static void getExistingUserByTelegramIdTest() {
         given()
-                .contentType(ContentType.JSON)
-                .baseUri(BASE_URI)
+                .spec(REQUEST_SPEC)
                 .pathParam("telegram_id", ExistingUserTest.user.telegramId)
         .when()
                 .get("/user/{telegram_id}")
@@ -49,8 +47,7 @@ public class ExistingUserTest extends BaseTest {
     @Test
     public static void getNonexistingUserByTelegramId() {
         given()
-                .contentType(ContentType.JSON)
-                .baseUri(BASE_URI)
+                .spec(REQUEST_SPEC)
                 .pathParam("telegram_id", new Faker(new Random()).number().digits(9))
         .when()
                 .get("/user/{telegram_id}")
@@ -61,8 +58,7 @@ public class ExistingUserTest extends BaseTest {
     @Test
     public static void createExistingUserTokenTest() {
         given()
-                .contentType(ContentType.JSON)
-                .baseUri(BASE_URI)
+                .spec(REQUEST_SPEC)
                 .queryParam("telegram_id", ExistingUserTest.user.telegramId)
         .when()
                 .post("/user/token")
@@ -73,8 +69,7 @@ public class ExistingUserTest extends BaseTest {
     @Test
     public static void createNonexistingUserTokenTest() {
         given()
-                .contentType(ContentType.JSON)
-                .baseUri(BASE_URI)
+                .spec(REQUEST_SPEC)
                 .queryParam("telegram_id", new Faker(new Random()).number().digits(9))
         .when()
                 .post("/user/token")
@@ -86,8 +81,7 @@ public class ExistingUserTest extends BaseTest {
     @Test
     public static void createExistingValidUserTest() {
         given()
-                .contentType(ContentType.JSON)
-                .baseUri(BASE_URI)
+                .spec(REQUEST_SPEC)
                 .body(ExistingUserTest.user)
         .when()
                 .post("/user")
