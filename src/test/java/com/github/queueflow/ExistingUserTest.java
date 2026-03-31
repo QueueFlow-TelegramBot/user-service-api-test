@@ -32,9 +32,9 @@ public class ExistingUserTest extends BaseTest {
         .when()
                 .get("/user/{telegram_id}")
         .then()
+                .statusCode(200)
                 .body("telegram_id", equalTo(user.telegramId))
-                .body("display_name", equalTo(user.displayName))
-                .statusCode(200);
+                .body("display_name", equalTo(user.displayName));
     }
 
     @Test
