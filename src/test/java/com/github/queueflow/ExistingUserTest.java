@@ -1,7 +1,8 @@
 package com.github.queueflow;
 
 import com.github.javafaker.Faker;
-import org.testng.annotations.BeforeTest;
+
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.Random;
@@ -11,7 +12,7 @@ import static org.hamcrest.Matchers.equalTo;
 
 
 public class ExistingUserTest extends BaseTest {
-    @BeforeTest
+    @BeforeMethod
     public static void createUser() {
         makeUser();
 
