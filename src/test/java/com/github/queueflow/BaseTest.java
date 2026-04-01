@@ -3,6 +3,7 @@ package com.github.queueflow;
 import com.github.javafaker.Faker;
 import com.github.queueflow.config.Environment;
 import com.github.queueflow.dto.User;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
@@ -15,7 +16,8 @@ public abstract class BaseTest {
     public static final RequestSpecification REQUEST_SPEC = new RequestSpecBuilder()
             .setBaseUri(BASE_URI)
             .setContentType(ContentType.JSON)
-            .build();
+            .build()
+            .filter(new AllureRestAssured());
 
     public static User user;
 
